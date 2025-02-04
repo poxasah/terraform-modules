@@ -1,12 +1,13 @@
 ##################
 # Global
 #####
-project            = "terraform-sabrina"
-environment        = "demo1"
-owner              = "sabrinademo1@gmail.com"
-region             = "sa-east-1"
-vpc_cidr           = "192.168.0.0/16"
-internaldns        = "tf-sabrina-demo1.sa-east-1"
+project      = "terraform-sabrina"
+environment  = "demo1"
+owner        = "sabrinademo1@gmail.com"
+region       = "sa-east-1"
+vpc_cidr     = "192.168.0.0/16"
+internaldns  = "tf-sabrina-demo1.sa-east-1"
+ssh_key_name = "sabrina-demo1"
 
 ##################
 # Subnets Multi-AZ
@@ -46,3 +47,12 @@ subnet_public_list = [
     availability_zone = "sa-east-1c"
   }
 ]
+
+
+##################
+# Bastion
+#####
+bastion_ami_name  = "ami-04d88e4b4e0a5db46" //AMI Ubuntu 24 AWS
+bastion_ec2_type  = "t3a.small"
+bastion_instances = "1"
+bastion_ebs_size  = 8

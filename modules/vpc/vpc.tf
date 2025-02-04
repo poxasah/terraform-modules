@@ -7,7 +7,7 @@ resource "aws_vpc" "vpc" {
 
   tags = {
     Name        = "${var.project}-vpc"
-    Project     = var.project   
+    Project     = var.project
     Environment = var.environment
     Owner       = var.owner
   }
@@ -26,7 +26,7 @@ resource "aws_subnet" "subnet_private" {
 
   tags = {
     Name        = "${var.project}-${var.subnet_private_list[count.index].name}"
-    Project     = var.project   
+    Project     = var.project
     Environment = var.environment
     Owner       = var.owner
   }
@@ -45,7 +45,7 @@ resource "aws_subnet" "subnet_public" {
 
   tags = {
     Name        = "${var.project}-${var.subnet_public_list[count.index].name}"
-    Project     = var.project   
+    Project     = var.project
     Environment = var.environment
     Owner       = var.owner
   }
@@ -59,7 +59,7 @@ resource "aws_internet_gateway" "internet_gateway" {
 
   tags = {
     Name        = "${var.project}-internet-gateway"
-    Project     = var.project    
+    Project     = var.project
     Environment = var.environment
     Owner       = var.owner
   }

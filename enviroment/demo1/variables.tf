@@ -21,6 +21,10 @@ variable "internaldns" {
   description = "Internal DNS NAME"
 }
 
+variable "ssh_key_name" {
+  description = "Name of ssh key"
+}
+
 ##################
 # Vars VPC
 #####
@@ -44,4 +48,24 @@ variable "subnet_public_list" {
     cidr              = string,
     availability_zone = string
   }))
+}
+
+##################
+# Vars Bastion
+#####
+variable "bastion_ami_name" {
+  description = "AMI ID"
+}
+
+variable "bastion_ec2_type" {
+  description = "EC2 Type"
+}
+
+variable "bastion_instances" {
+  description = "Number of Instances"
+  default     = 0
+}
+
+variable "bastion_ebs_size" {
+  description = "EBS size"
 }

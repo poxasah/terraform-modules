@@ -17,10 +17,6 @@ variable "region" {
   description = "The region to deploy the cluster in, e.g: us-east-1."
 }
 
-variable "product" {
-  description = "Name Project"
-}
-
 variable "internaldns" {
   description = "Internal DNS"
 }

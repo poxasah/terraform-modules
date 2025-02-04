@@ -1,7 +1,7 @@
 ##################
 # EC2 Bastion
 #####
-resource "aws_instance" "ec2_bastion" {
+resource "aws_instance" "bastion" {
   ami                         = var.bastion_ami_name
   instance_type               = var.bastion_ec2_type
   subnet_id                   = var.subnet_public_id
@@ -28,7 +28,6 @@ resource "aws_instance" "ec2_bastion" {
     Project     = var.project
     Environment = var.environment
     Owner       = var.owner
-    Product     = var.product
   }
 
   volume_tags = {
@@ -36,19 +35,19 @@ resource "aws_instance" "ec2_bastion" {
     Project     = var.project
     Environment = var.environment
     Owner       = var.owner
-    Product     = var.product
     VolumeUse   = "root"
 
   }
 }
 
+
 ##################
 # Public IP Bastion
 #####
 resource "aws_eip" "ip_bastion" {
-  instance   = element(aws_instance.ec2_bastion.*.id, count.index)
+  instance   = element(aws_instance.bastion.*.id, count.index)
   domain     = "vpc"
-  depends_on = [aws_instance.ec2_bastion]
+  depends_on = [aws_instance.bastion]
   count      = var.bastion_instances
 
   tags = {
@@ -56,7 +55,6 @@ resource "aws_eip" "ip_bastion" {
     Project     = var.project
     Environment = var.environment
     Owner       = var.owner
-    Product     = var.product
   }
 }
 
@@ -69,5 +67,5 @@ resource "aws_route53_record" "bastion_a_record" {
   type    = "A"
   ttl     = 60
   count   = var.bastion_instances
-  records = [element(aws_instance.ec2_bastion.*.private_ip, count.index)]
+  records = [element(aws_instance.bastion.*.private_ip, count.index)]
 }
