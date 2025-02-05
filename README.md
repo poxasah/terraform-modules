@@ -27,7 +27,7 @@ O Terraform provisiona os seguintes serviços na AWS.
 
 ## ⚠️ Atenção
 
-- A variavel `ssh_key_name` deve ser o nome da chave SSH pública importada ou criada no AWS Key Pair.
+- A variavel `ssh_key_name` deve ser o nome da chave SSH pública importada ou gerada no AWS Key Pair.
 
 ## Pré-requisitos
 
