@@ -15,7 +15,8 @@ Esse projeto utiliza Terraform modularizado para provisionar e gerenciar recurso
   - **vpc/**: Módulo responsável por configurar recursos relacionados à VPC.
     - `vpc.tf`: Define e provisiona os recursos necessários para a  VPC.
     - `variables.tf`: Declara as variáveis utilizadas pelo módulo.
-    
+    - `output.tf`: Define as saídas do módulo, permitindo que informações, como o ID da VPC, sejam referenciadas em outros recursos ou módulos.
+
 ## Recursos Provisionados
 O Terraform provisiona os seguintes serviços na AWS.
 
@@ -27,7 +28,7 @@ O Terraform provisiona os seguintes serviços na AWS.
 
 ## ⚠️ Atenção
 
-- A variavel `ssh_key_name` deve ser o nome da chave SSH pública importada ou gerada no AWS Key Pair.
+- A variavel `ssh_key_name` deve ser o nome da chave SSH pública importada ou criada no AWS Key Pair.
 
 ## Pré-requisitos
 
