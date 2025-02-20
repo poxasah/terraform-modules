@@ -69,3 +69,7 @@ variable "bastion_instances" {
 variable "bastion_ebs_size" {
   description = "EBS size"
 }
+
+variable "ssl_certificate_alb_arn" {
+  description = "ARN Certificate AWS"
+}

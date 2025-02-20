@@ -1,13 +1,14 @@
 ##################
 # Global
 #####
-project      = "terraform-sabrina"
-environment  = "demo1"
-owner        = "sabrinademo1@gmail.com"
-region       = "sa-east-1"
-vpc_cidr     = "192.168.0.0/16"
-internaldns  = "tf-sabrina-demo1.sa-east-1"
-ssh_key_name = "sabrina-demo1"
+project                 = "terraform-sabrina"
+environment             = "demo1"
+owner                   = "sabrinademo1@gmail.com"
+region                  = "sa-east-1"
+vpc_cidr                = "192.168.0.0/16"
+internaldns             = "tf-sabrina-demo1.sa-east-1"
+ssh_key_name            = "sabrina-demo1"
+ssl_certificate_alb_arn = "arn:aws:acm:us-east-1:590184069042:certificate/06f7c4a0-a220-4d7d-b8bd-562e15de11c0"
 
 ##################
 # Subnets Multi-AZ

@@ -24,7 +24,9 @@ O Terraform provisiona os seguintes serviços na AWS.
 - VPC | Subnets Multi-AZ
 - NAT Gateway
 - Internet Gateway
-
+- Application LoadBalancer
+- Target Group - Associate LoadBalancer
+- Bucket S3
 
 ## ⚠️ Atenção
 

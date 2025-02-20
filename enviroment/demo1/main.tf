@@ -13,6 +13,19 @@ module "vpc" {
   subnet_public_list  = var.subnet_public_list
 }
 
+
+module "aws_application_lb" {
+  source                       = "../../modules/load_balancer"
+  region                       = var.region
+  project                      = var.project
+  environment                  = var.environment
+  owner                        = var.owner
+  vpc_id                       = module.vpc.vpc_id
+  subnet_public_id             = module.vpc.subnet_public_id[*]
+  ssl_certificate_alb_arn      = var.ssl_certificate_alb_arn
+  alb_security_group           = module.security_group.alb_security_group
+
+}
 module "route53" {
   source         = "../../modules/route53"
   region         = var.region
@@ -30,6 +43,13 @@ module "security_group" {
   environment = var.environment
   owner       = var.owner
   vpc_id      = module.vpc.vpc_id
+}
+
+module "aws_s3" {
+  source      = "../../modules/buckets_s3"
+  project     = var.project
+  environment = var.environment
+  owner       = var.owner
 }
 
 module "bastion" {
