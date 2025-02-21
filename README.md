@@ -27,6 +27,7 @@ O Terraform provisiona os seguintes serviços na AWS.
 - Application LoadBalancer
 - Target Group - Associate LoadBalancer
 - Bucket S3
+- EC2 Aplicação Target Group - ALB
 
 ## ⚠️ Atenção
 

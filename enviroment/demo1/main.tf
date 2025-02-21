@@ -14,7 +14,7 @@ module "vpc" {
 }
 
 
-module "aws_application_lb" {
+module "application_lb" {
   source                       = "../../modules/load_balancer"
   region                       = var.region
   project                      = var.project
@@ -24,8 +24,8 @@ module "aws_application_lb" {
   subnet_public_id             = module.vpc.subnet_public_id[*]
   ssl_certificate_alb_arn      = var.ssl_certificate_alb_arn
   alb_security_group           = module.security_group.alb_security_group
-
 }
+
 module "route53" {
   source         = "../../modules/route53"
   region         = var.region
@@ -69,4 +69,23 @@ module "bastion" {
   bastion_ec2_type       = var.bastion_ec2_type
   bastion_ebs_size       = var.bastion_ebs_size
 }
+
+module "ec2_aplicacao" {
+  source                 = "../../modules/ec2_aplicacao"
+  region                 = var.region
+  project                = var.project
+  environment            = var.environment
+  owner                  = var.owner
+  internaldns            = var.internaldns
+  ssh_key_name           = var.ssh_key_name
+  default_security_group = module.security_group.default_security_group
+  subnet_private_id      = module.vpc.private_subnet_id[0]
+  route53_zone_id        = module.route53.route53_zone_id
+  tg_application         = module.application_lb.tg_application
+  demo_ami_name          = var.demo_ami_name
+  demo_ec2_type          = var.demo_ec2_type
+  demo_ebs_size          = var.demo_ebs_size
+  demo_instances         = var.demo_instances
+}
+
 

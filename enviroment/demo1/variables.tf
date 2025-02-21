@@ -73,3 +73,23 @@ variable "bastion_ebs_size" {
 variable "ssl_certificate_alb_arn" {
   description = "ARN Certificate AWS"
 }
+
+##################
+# Vars Demo
+#####
+variable "demo_ami_name" {
+  description = "AMI ID"
+}
+
+variable "demo_ec2_type" {
+  description = "EC2 Type"
+}
+
+variable "demo_instances" {
+  description = "Number of Instances"
+  default     = 0
+}
+
+variable "demo_ebs_size" {
+  description = "EBS size"
+}
