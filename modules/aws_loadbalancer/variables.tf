@@ -13,17 +13,6 @@ variable "owner" {
   description = "Name Owner"
 }
 
-variable "region" {
-  description = "The region to deploy the cluster in, e.g: sa-east-1."
-}
-
-##################
-#Security Groups
-#####
-variable "alb_security_group" {
-  description = "ALb security group"
-}
-
 ##################
 # Vars VPC
 #####
@@ -36,8 +25,19 @@ variable "subnet_public_id" {
 }
 
 ##################
+#Security Groups
+#####
+variable "alb_security_group" {
+  description = "ALb security group"
+}
+
+##################
 # Vars SSL ALB
 #####
-variable "ssl_certificate_alb_arn" {
-  description = "ARN SSL ALB"
+variable "grafana_cname_name" {
+  description = "Name subdominio"
+}
+
+variable "publicdns" {
+  description = "Wildcard DNS"
 }

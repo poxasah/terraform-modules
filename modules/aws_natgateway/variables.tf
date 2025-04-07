@@ -13,16 +13,17 @@ variable "owner" {
   description = "Name Owner"
 }
 
-variable "region" {
-  description = "The region to deploy the cluster in, e.g: us-east-1."
+##################
+# Vars VPC
+#####
+variable "vpc_id" {
+  description = "VPC ID"
 }
 
-##################
-# DNS Internal
-#####
-variable "route53_vpc_id" {
-  description = "Route 53 VPC ID"
+variable "subnet_public_id" {
+  description = "ID Subnet Public"
 }
-variable "internaldns" {
-  description = "Internal DNS"
+
+variable "subnet_private_id" {
+  description = "ID Subnet Private"
 }

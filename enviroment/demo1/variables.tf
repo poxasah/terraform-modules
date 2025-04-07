@@ -1,5 +1,5 @@
 ##################
-# Vars Environments
+# Vars Global
 #####
 variable "project" {
   description = "The name of projetct"
@@ -14,11 +14,15 @@ variable "owner" {
 }
 
 variable "region" {
-  description = "The region to deploy the cluster in, e.g: sa-east-1."
+  description = "The region to deploy the cluster in, e.g: us-east-1."
 }
 
 variable "internaldns" {
   description = "Internal DNS NAME"
+}
+
+variable "publicdns" {
+  description = "Public DNS NAME"
 }
 
 variable "ssh_key_name" {
@@ -51,6 +55,13 @@ variable "subnet_public_list" {
 }
 
 ##################
+# DNS Route53 ALB
+#####
+variable "grafana_cname_name" {
+  description = "Name subdominio"
+}
+
+##################
 # Vars Bastion
 #####
 variable "bastion_ami_name" {
@@ -70,26 +81,22 @@ variable "bastion_ebs_size" {
   description = "EBS size"
 }
 
-variable "ssl_certificate_alb_arn" {
-  description = "ARN Certificate AWS"
-}
 
-##################
-# Vars Demo
+###################
+# Vars Grafana
 #####
-variable "demo_ami_name" {
-  description = "AMI ID"
+variable "grafana_ec2_type" {
+  description = "EC2 type"
+}
+variable "grafana_instances" {
+  description = "Number of instances"
+  default     = "1"
 }
 
-variable "demo_ec2_type" {
-  description = "EC2 Type"
-}
-
-variable "demo_instances" {
-  description = "Number of Instances"
-  default     = 0
-}
-
-variable "demo_ebs_size" {
+variable "grafana_ebs_size" {
   description = "EBS size"
+}
+
+variable "grafana_ami_name" {
+  description = "AMI"
 }

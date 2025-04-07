@@ -21,3 +21,18 @@ resource "aws_route53_zone" "internal" {
   }
 
 }
+
+##################
+# DNS Public Route53
+#####
+resource "aws_route53_zone" "public" {
+  name    = "${var.publicdns}."
+  comment = "Public DNS"
+
+  tags = {
+    Name        = "${var.project}-dns"
+    Project     = var.project
+    Environment = var.environment
+    Owner       = var.owner
+  }
+}

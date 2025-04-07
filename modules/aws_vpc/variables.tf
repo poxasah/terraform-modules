@@ -14,7 +14,7 @@ variable "owner" {
 }
 
 variable "region" {
-  description = "The region to deploy the cluster in, e.g: sa-east-1."
+  description = "The region to deploy the cluster in, e.g: us-east-1."
 }
 
 ##################

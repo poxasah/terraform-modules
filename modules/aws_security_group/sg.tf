@@ -1,9 +1,9 @@
 ##################
 # Security Group VPC Default
 #####
-resource "aws_security_group" "vpc_default_sec_group" {
+resource "aws_security_group" "vpc_default_sg" {
   name        = "${var.project}-vpc-default-sg"
-  description = "Default security group that allows all instances in the VPC."
+  description = "Default SG that allows all EC2 in the VPC."
   vpc_id      = var.vpc_id
 
   ingress {
@@ -13,7 +13,7 @@ resource "aws_security_group" "vpc_default_sec_group" {
     protocol    = "-1"
     self        = true
   }
-
+  
   ingress {
     description     = "Allow ALB traffic on port 80"
     from_port       = 80
@@ -78,13 +78,13 @@ resource "aws_security_group" "alb_sec_group" {
 ##################
 # Security Group Bastion
 #####
-resource "aws_security_group" "bastion_sec_group" {
+resource "aws_security_group" "bastion_sg" {
   name        = "${var.project}-bastion-sg"
   description = "Bastion Rules"
   vpc_id      = var.vpc_id
 
   ingress {
-    description = "ssh-devops"
+    description = "ssh"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"

@@ -1,8 +1,9 @@
+
 ##################
 # Bucket Files DevOps
 #####
 resource "aws_s3_bucket" "s3_files_devops" {
-  bucket        = "tf.${var.environment}.devops"
+  bucket        = "demo.${var.environment}.devops"
   force_destroy = true
 
   tags = {

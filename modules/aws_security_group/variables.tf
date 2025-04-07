@@ -12,3 +12,9 @@ variable "environment" {
 variable "owner" {
   description = "Name Owner"
 }
+##################
+# Vars VPC
+#####
+variable "vpc_id" {
+  description = "VPC ID"
+}

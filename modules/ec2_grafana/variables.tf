@@ -44,25 +44,25 @@ variable "default_security_group" {
 }
 
 ##################
-# Demo
+# grafana
 #####
-variable "demo_ami_name" {
+variable "grafana_ami_name" {
   description = "AMI Name"
 }
 
-variable "demo_ec2_type" {
+variable "grafana_ec2_type" {
   description = "EC2 type"
 }
 
-variable "demo_instances" {
+variable "grafana_instances" {
   description = "Number of instances"
   default     = "1"
 }
 
-variable "demo_ebs_size" {
+variable "grafana_ebs_size" {
   description = "EBS size"
 }
 
-variable "tg_application" {
-  description = "ARB Target Group ALB demo"
-}
+#variable "tg_grafana_arn" {
+#  description = "ARB Target Group ALB grafana"
+#}

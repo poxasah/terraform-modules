@@ -1,7 +1,7 @@
 ##################
 # EC2 Bastion
 #####
-resource "aws_instance" "bastion" {
+resource "aws_instance" "ec2_bastion" {
   ami                         = var.bastion_ami_name
   instance_type               = var.bastion_ec2_type
   subnet_id                   = var.subnet_public_id
@@ -16,13 +16,7 @@ resource "aws_instance" "bastion" {
   }
 
   key_name = var.ssh_key_name
-
-  user_data = <<-EOT
-              #!/bin/bash
-              hostnamectl set-hostname "bastion-${count.index + 1}-${var.internaldns}"
-              echo "127.0.0.1 bastion-${count.index + 1}.${var.internaldns}" >> /etc/hostname
-              EOT
-
+  
   tags = {
     Name        = "${var.project}-bastion-${count.index + 1}"
     Project     = var.project
@@ -40,14 +34,13 @@ resource "aws_instance" "bastion" {
   }
 }
 
-
 ##################
 # Public IP Bastion
 #####
 resource "aws_eip" "ip_bastion" {
-  instance   = element(aws_instance.bastion.*.id, count.index)
+  instance   = element(aws_instance.ec2_bastion.*.id, count.index)
   domain     = "vpc"
-  depends_on = [aws_instance.bastion]
+  depends_on = [aws_instance.ec2_bastion]
   count      = var.bastion_instances
 
   tags = {
@@ -67,5 +60,5 @@ resource "aws_route53_record" "bastion_a_record" {
   type    = "A"
   ttl     = 60
   count   = var.bastion_instances
-  records = [element(aws_instance.bastion.*.private_ip, count.index)]
+  records = [element(aws_instance.ec2_bastion.*.private_ip, count.index)]
 }
