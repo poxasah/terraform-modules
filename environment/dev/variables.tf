@@ -1,5 +1,5 @@
 ##################
-# Vars Global
+# Vars Environments
 #####
 variable "project" {
   description = "The name of projetct"
@@ -9,31 +9,22 @@ variable "environment" {
   description = "The name of environment"
 }
 
-variable "owner" {
-  description = "Name Owner"
-}
-
 variable "region" {
-  description = "The region to deploy the cluster in, e.g: us-east-1."
-}
-
-variable "internaldns" {
-  description = "Internal DNS NAME"
-}
-
-variable "publicdns" {
-  description = "Public DNS NAME"
+  description = "The region AWS"
 }
 
 variable "ssh_key_name" {
   description = "Name of ssh key"
 }
 
+variable "internaldns" {
+  description = "DNS Internal"
+}
 ##################
 # Vars VPC
 #####
 variable "vpc_cidr" {
-  description = "The CIDR block for the VPC, e.g: 10.0.0.0/16"
+  description = "CIDR block for the VPC"
 }
 
 variable "subnet_private_list" {
@@ -55,13 +46,6 @@ variable "subnet_public_list" {
 }
 
 ##################
-# DNS Route53 ALB
-#####
-variable "grafana_cname_name" {
-  description = "Name subdominio"
-}
-
-##################
 # Vars Bastion
 #####
 variable "bastion_ami_name" {
@@ -79,24 +63,4 @@ variable "bastion_instances" {
 
 variable "bastion_ebs_size" {
   description = "EBS size"
-}
-
-
-###################
-# Vars Grafana
-#####
-variable "grafana_ec2_type" {
-  description = "EC2 type"
-}
-variable "grafana_instances" {
-  description = "Number of instances"
-  default     = "1"
-}
-
-variable "grafana_ebs_size" {
-  description = "EBS size"
-}
-
-variable "grafana_ami_name" {
-  description = "AMI"
 }

@@ -9,6 +9,6 @@ variable "environment" {
   description = "The name of environment"
 }
 
-variable "owner" {
-  description = "Name Owner"
+variable "region" {
+  description = "The region AWS"
 }

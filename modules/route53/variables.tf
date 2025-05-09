@@ -9,21 +9,16 @@ variable "environment" {
   description = "The name of environment"
 }
 
-variable "owner" {
-  description = "Name Owner"
+variable "region" {
+  description = "The region AWS"
 }
 
 ##################
-# Vars VPC
+# DNS Internal
 #####
 variable "vpc_id" {
   description = "VPC ID"
 }
-
-variable "subnet_public_id" {
-  description = "ID Subnet Public"
-}
-
-variable "subnet_private_id" {
-  description = "ID Subnet Private"
+variable "internaldns" {
+  description = "Internal DNS"
 }

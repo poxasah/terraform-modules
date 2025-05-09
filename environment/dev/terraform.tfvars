@@ -1,14 +1,12 @@
 ##################
 # Global
 #####
-project            = "tf-demo1"
-environment        = "demo1"
-owner              = "sabrina-demo1"
-region             = "us-west-2"
-vpc_cidr           = "172.16.0.0/16"
-internaldns        = "sabrina-demo1.us-west-2"
-publicdns          = "sabrinadbs.com"
-ssh_key_name       = "sabrina-demo"
+project      = "tf-dev"
+environment  = "dev"
+region       = "us-west-2"
+vpc_cidr     = "172.16.0.0/16"
+internaldns  = "sabrina-dev.us-west-2"
+ssh_key_name = "sabrina-dev"
 
 ##################
 # Subnets Multi-AZ
@@ -50,22 +48,9 @@ subnet_public_list = [
 ]
 
 ##################
-# DNS Public
-#####
-grafana_cname_name           = "grafana"
-
-##################
 # Bastion
 #####
-bastion_ami_name  = "ami-075686beab831bb7f" //Ubuntu 24.04 , AMI AWS
+bastion_ami_name  = "ami-0e2c8caa4b6378d8c" //Ubuntu 24.04 , AMI AWS
 bastion_ec2_type  = "t3a.small"
 bastion_instances = "1"
 bastion_ebs_size  = 8
-
-##################
-# Grafana
-#####
-grafana_ami_name  = "ami-075686beab831bb7f" //Ubuntu 24.04 , AMI AWS
-grafana_ec2_type  = "t3a.small"
-grafana_instances = "1"
-grafana_ebs_size  = 50

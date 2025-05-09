@@ -9,19 +9,15 @@ variable "environment" {
   description = "The name of environment"
 }
 
-variable "owner" {
-  description = "Name Owner"
-}
-
 variable "region" {
-  description = "The region to deploy the cluster in, e.g: us-east-1."
+  description = "The region AWS"
 }
 
 ##################
 # Vars VPC
 #####
 variable "vpc_cidr" {
-  description = "The CIDR block for the VPC, e.g: 10.0.0.0/16"
+  description = "CIDR block"
 }
 
 variable "subnet_private_list" {

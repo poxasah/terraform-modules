@@ -9,16 +9,8 @@ variable "environment" {
   description = "The name of environment"
 }
 
-variable "owner" {
-  description = "Name Owner"
-}
-
-variable "region" {
-  description = "The region to deploy the cluster in, e.g: us-east-1."
-}
-
 variable "internaldns" {
-  description = "Internal DNS"
+  description = "DNS Internal"
 }
 
 variable "ssh_key_name" {
@@ -34,21 +26,6 @@ variable "vpc_id" {
 
 variable "subnet_public_id" {
   description = "ID Subnet Public"
-}
-
-variable "route53_zone_id" {
-  description = "VPC ID"
-}
-
-##################
-#Security Groups
-#####
-variable "default_security_group" {
-  description = "Default security group"
-}
-
-variable "bastion_security_group" {
-  description = "Bastion security group"
 }
 
 ##################
@@ -67,4 +44,16 @@ variable "bastion_instances" {
 
 variable "bastion_ebs_size" {
   description = "EBS size"
+}
+
+
+##################
+#Security Groups
+#####
+variable "internal_security_group" {
+  description = "Default security group"
+}
+
+variable "bastion_security_group" {
+  description = "Bastion security group"
 }

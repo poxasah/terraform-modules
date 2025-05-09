@@ -8,7 +8,14 @@ resource "aws_instance" "ec2_bastion" {
   count                       = var.bastion_instances
   associate_public_ip_address = true
 
-  vpc_security_group_ids = [var.bastion_security_group, var.default_security_group]
+  vpc_security_group_ids = [var.bastion_security_group, var.internal_security_group]
+
+  lifecycle {
+    prevent_destroy = true
+    ignore_changes = [
+      key_name
+    ]
+  }
 
   root_block_device {
     volume_size = var.bastion_ebs_size
@@ -16,28 +23,24 @@ resource "aws_instance" "ec2_bastion" {
   }
 
   key_name = var.ssh_key_name
-  
+
   tags = {
     Name        = "${var.project}-bastion-${count.index + 1}"
     Project     = var.project
     Environment = var.environment
-    Owner       = var.owner
   }
 
   volume_tags = {
-    Name        = "${var.project}-bastion-${count.index + 1}-root"
+    Name        = "${var.project}-bastion-${count.index + 1}"
     Project     = var.project
     Environment = var.environment
-    Owner       = var.owner
-    VolumeUse   = "root"
-
   }
 }
 
 ##################
 # Public IP Bastion
 #####
-resource "aws_eip" "ip_bastion" {
+resource "aws_eip" "bastion_ip" {
   instance   = element(aws_instance.ec2_bastion.*.id, count.index)
   domain     = "vpc"
   depends_on = [aws_instance.ec2_bastion]
@@ -47,7 +50,6 @@ resource "aws_eip" "ip_bastion" {
     Name        = "${var.project}-bastion-${count.index + 1}"
     Project     = var.project
     Environment = var.environment
-    Owner       = var.owner
   }
 }
 
@@ -55,7 +57,7 @@ resource "aws_eip" "ip_bastion" {
 # Bastion IP DNS
 #####
 resource "aws_route53_record" "bastion_a_record" {
-  zone_id = var.route53_zone_id
+  zone_id = var.vpc_id
   name    = "bastion-${count.index + 1}.${var.internaldns}."
   type    = "A"
   ttl     = 60
